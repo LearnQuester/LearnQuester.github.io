@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitemap | Play Free Online Games | LearnQuester</title>
+  <meta name="description" content="Discover all HTML5 games, categories, and information pages on LearnQuester.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f091c;
+      --bg-gradient: radial-gradient(circle at top, #241445 0%, #0f091c 75%);
+      --bg-card: rgba(28, 18, 51, 0.75);
+      --bg-card-hover: rgba(40, 25, 72, 0.9);
+      --card-border: rgba(139, 92, 246, 0.15);
+      --card-border-hover: rgba(139, 92, 246, 0.6);
+      --accent: #8b5cf6;
+      --accent-secondary: #a78bfa;
+      --accent-glow: rgba(139, 92, 246, 0.35);
+      --text-white: #ffffff;
+      --text-gray: #ddd6fe;
+      --card-radius: 16px;
+      --shadow-glow: 0 8px 30px rgba(139, 92, 246, 0.15);
+      --font-family: 'Outfit', sans-serif;
+      --neon-green: #8b5cf6;
+      --neon-pink: #a78bfa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--bg-gradient);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Top Navbar Styles */
+    .top-navbar {
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 70px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .top-nav-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #ffffff 30%, var(--text-gray) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .top-nav-logo span {
+      -webkit-text-fill-color: initial;
+    }
+
+    .top-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-nav-item {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .top-nav-item:hover, .top-nav-item.active {
+      color: var(--text-white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Dropdown Styles */
+    .top-nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .top-nav-dropdown-btn {
+      background: none;
+      border: none;
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .top-nav-dropdown-btn:hover, .top-nav-dropdown.active .top-nav-dropdown-btn {
+      color: var(--text-white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .top-nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #111519;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      min-width: 180px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      z-index: 1010;
+      padding: 8px 0;
+      margin-top: 5px;
+    }
+
+    .top-nav-dropdown-content a {
+      color: var(--text-gray);
+      padding: 10px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .top-nav-dropdown-content a:hover, .top-nav-dropdown-content a.active {
+      color: var(--text-white);
+      background: var(--accent);
+    }
+
+    .top-nav-dropdown:hover .top-nav-dropdown-content {
+      display: block;
+    }
+
+    /* Toggle button for Mobile */
+    .top-nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1020;
+    }
+
+    .top-nav-toggle .toggle-bar {
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      padding: 15px 20px 8px;
+      text-align: center;
+      position: relative;
+    }
+
+    header::after {
+      display: none;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #fff 0%, #a0aec0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 20px;
+      flex: 1;
+    }
+
+    .static-content-box {
+      background: rgba(22, 28, 45, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin: 0 auto;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .static-content-box h2 {
+      color: var(--text-white);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    .static-content-box p {
+      color: var(--text-gray);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .static-content-box ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: var(--text-gray);
+    }
+
+    .static-content-box li {
+      margin-bottom: 8px;
+    }
+
+    /* Categories Navigation Bar in Footer */
+    .categories-nav {
+      margin: 0 auto 30px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      max-width: 1200px;
+    }
+
+    .categories-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 10px;
+    }
+
+    .category-link {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .category-link:hover, .category-link.active {
+      color: var(--text-white);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-gray);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .top-nav-toggle {
+        display: flex;
+      }
+
+      .top-nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 250px;
+        height: calc(100vh - 70px);
+        background: #0b0f19;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 30px 20px;
+        gap: 10px;
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+
+      .top-nav-menu.open {
+        right: 0;
+      }
+
+      .top-nav-item, .top-nav-dropdown-btn {
+        width: 100%;
+        text-align: left;
+        padding: 12px 15px;
+      }
+
+      .top-nav-dropdown-content {
+        position: static;
+        display: block;
+        background: rgba(255, 255, 255, 0.02);
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        margin-top: 0;
+        padding-left: 15px;
+      }
+
+      .top-nav-toggle.active .toggle-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .top-nav-toggle.active .toggle-bar:nth-child(2) {
+        opacity: 0;
+      }
+      .top-nav-toggle.active .toggle-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+      }
+      .static-content-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <nav class="top-navbar">
+    <div class="top-nav-container">
+      <a href="index.html" class="top-nav-logo">
+        <span>⚔️</span> LearnQuester
+      </a>
+
+      <button class="top-nav-toggle" id="topNavToggle" aria-label="Toggle menu">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </button>
+      <div class="top-nav-menu" id="topNavMenu">
+        <a href="index.html" class="top-nav-item ">Home</a>
+        <a href="category-github-io.html" class="top-nav-item ">Github.io</a>
+        <a href="category-casual.html" class="top-nav-item ">Casual</a>
+        <a href="category-puzzle.html" class="top-nav-item ">Puzzle</a>
+        <a href="category-simulation.html" class="top-nav-item ">Simulation</a>
+        <a href="category-adventure.html" class="top-nav-item ">Adventure</a>
+        <a href="category-racing-driving.html" class="top-nav-item ">Racing & Driving</a>
+        <div class="top-nav-dropdown ">
+          <button class="top-nav-dropdown-btn">More ▾</button>
+          <div class="top-nav-dropdown-content">
+            <a href="category-agility.html" class="">Agility</a>
+            <a href="category-battle.html" class="">Battle</a>
+            <a href="category-basketball.html" class="">Basketball</a>
+            <a href="category-strategy.html" class="">Strategy</a>
+            <a href="category-shooter.html" class="">Shooter</a>
+            <a href="category-bike.html" class="">Bike</a>
+            <a href="category-car.html" class="">Car</a>
+            <a href="category-controller.html" class="">Controller</a>
+            <a href="category-escape.html" class="">Escape</a>
+            <a href="category-flash.html" class="">Flash</a>
+            <a href="category-fps.html" class="">FPS</a>
+            <a href="category-horror.html" class="">Horror</a>
+            <a href="category-mahjong.html" class="">Mahjong</a>
+            <a href="category-minecraft.html" class="">Minecraft</a>
+            <a href="category-pool.html" class="">Pool</a>
+            <a href="category-soccer.html" class="">Soccer</a>
+            <a href="category-stickman.html" class="">Stickman</a>
+            <a href="category-thinky.html" class="">Thinky</a>
+            <a href="category-tower-defense.html" class="">Tower Defense</a>
+            <a href="category-match-3.html" class="">Match-3</a>
+            <a href="category-dress-up.html" class="">Dress-up</a>
+            <a href="category-merge.html" class="">Merge</a>
+            <a href="category-mobile2-112.html" class="">Mobile2,112</a>
+            <a href="category-io.html" class="">.IO</a>
+            <a href="category-cards.html" class="">Cards</a>
+            <a href="category-mouse1-707.html" class="">Mouse1,707</a>
+            <a href="category-educational.html" class="">Educational</a>
+            <a href="category-battle524.html" class="">Battle524</a>
+            <a href="category-mahjong-connect.html" class="">Mahjong & Connect</a>
+            <a href="category-sports.html" class="">Sports</a>
+            <a href="category-football.html" class="">Football</a>
+            <a href="category-quiz.html" class="">Quiz</a>
+            <a href="category-cooking.html" class="">Cooking</a>
+            <a href="category-casual971.html" class="">Casual971</a>
+            <a href="category-art.html" class="">Art</a>
+            <a href="category-animal216.html" class="">Animal216</a>
+            <a href="category-arena255.html" class="">Arena255</a>
+            <a href="category-monster206.html" class="">Monster206</a>
+            <a href="category-dress-up97.html" class="">Dress Up97</a>
+            <a href="category-fashion105.html" class="">Fashion105</a>
+            <a href="category-collect565.html" class="">Collect565</a>
+            <a href="category-care.html" class="">Care</a>
+            <a href="category-boardgames.html" class="">Boardgames</a>
+            <a href="category-soccer60.html" class="">Soccer60</a>
+            <a href="category-turn-based30.html" class="">Turn Based30</a>
+            <a href="category-physics371.html" class="">Physics371</a>
+            <a href="category-avoid295.html" class="">Avoid295</a>
+            <a href="category-3d1-371.html" class="">3D1,371</a>
+            <a href="category-idle448.html" class="">Idle448</a>
+            <a href="category-robot49.html" class="">Robot49</a>
+            <a href="category-fighting124.html" class="">Fighting124</a>
+            <a href="category-brain.html" class="">Brain</a>
+            <a href="category-brain261.html" class="">Brain261</a>
+            <a href="category-mobile2-095.html" class="">Mobile2,095</a>
+            <a href="category-premium-perks74.html" class="">Premium Perks74</a>
+            <a href="category-mission207.html" class="">Mission207</a>
+            <a href="category-2d1-070.html" class="">2D1,070</a>
+            <a href="category-bubble-shooter.html" class="">Bubble Shooter</a>
+            <a href="category-top-down251.html" class="">Top-Down251</a>
+            <a href="category-logic538.html" class="">Logic538</a>
+            <a href="category-avoid.html" class="">Avoid</a>
+            <a href="category-jumping147.html" class="">Jumping147</a>
+            <a href="category-traffic34.html" class="">Traffic34</a>
+            <a href="category-sniper39.html" class="">Sniper39</a>
+            <a href="category-gun238.html" class="">Gun238</a>
+            <a href="category-party23.html" class="">Party23</a>
+            <a href="category-fps174.html" class="">FPS174</a>
+            <a href="category-fps-games.html" class="">FPS games</a>
+            <a href="category-monster.html" class="">Monster</a>
+            <a href="category-cartoon76.html" class="">Cartoon76</a>
+            <a href="category-fighting.html" class="">Fighting</a>
+            <a href="category-1-player139.html" class="">1 Player139</a>
+            <a href="category-fashion.html" class="">Fashion</a>
+            <a href="category-idle.html" class="">Idle</a>
+            <a href="category-incremental388.html" class="">Incremental388</a>
+            <a href="category-connect68.html" class="">Connect68</a>
+            <a href="category-sandbox.html" class="">Sandbox</a>
+            <a href="category-sandbox40.html" class="">Sandbox40</a>
+            <a href="category-ragdoll57.html" class="">Ragdoll57</a>
+            <a href="category-free-ragdoll-games.html" class="">Free ragdoll games</a>
+            <a href="category-deep-immersive24.html" class="">Deep & immersive24</a>
+            <a href="category-battle523.html" class="">Battle523</a>
+            <a href="category-premium-perks71.html" class="">Premium Perks71</a>
+            <a href="category-hero71.html" class="">Hero71</a>
+            <a href="category-mmo24.html" class="">MMO24</a>
+            <a href="category-can-t-stop-playing212.html" class="">Can’t Stop Playing212</a>
+            <a href="category-mouse1-697.html" class="">Mouse1,697</a>
+            <a href="category-idle445.html" class="">Idle445</a>
+            <a href="category-food.html" class="">Food</a>
+            <a href="category-food95.html" class="">Food95</a>
+            <a href="category-cooking46.html" class="">Cooking46</a>
+            <a href="category-business135.html" class="">Business135</a>
+            <a href="category-restaurant64.html" class="">Restaurant64</a>
+            <a href="category-world-cup17.html" class="">World Cup17</a>
+            <a href="category-magic46.html" class="">Magic46</a>
+            <a href="category-roguelike38.html" class="">Roguelike38</a>
+            <a href="category-rpg80.html" class="">RPG80</a>
+            <a href="category-rpg-games.html" class="">RPG games</a>
+            <a href="category-roguelike-games.html" class="">Roguelike games</a>
+            <a href="category-hero72.html" class="">Hero72</a>
+            <a href="category-mmo25.html" class="">MMO25</a>
+            <a href="category-jigsaw.html" class="">Jigsaw</a>
+            <a href="category-unblocked.html" class="">Unblocked</a>
+            <a href="category-webgame.html" class="">WebGame</a>
+            <a href="category-discord.html" class="">Discord</a>
+            <a href="category-games.html" class="">Games</a>
+            <a href="category-interstellar.html" class="">Interstellar</a>
+            <a href="category-interstellarnetwork.html" class="">Interstellarnetwork</a>
+            <a href="category-interstellarproxy.html" class="">Interstellarproxy</a>
+            <a href="category-interstellarunblocker.html" class="">Interstellarunblocker</a>
+            <a href="category-proxies.html" class="">Proxies</a>
+            <a href="category-proxy.html" class="">Proxy</a>
+            <a href="category-school.html" class="">School</a>
+            <a href="category-unblocked-games.html" class="">Unblocked Games</a>
+            <a href="category-unblocker.html" class="">Unblocker</a>
+            <a href="category-unblockers.html" class="">Unblockers</a>
+            <a href="category-web-proxy.html" class="">Web Proxy</a>
+            <a href="category-youtube.html" class="">Youtube</a>
+            <a href="category-match-3117.html" class="">Match 3117</a>
+            <a href="category-cute.html" class="">Cute</a>
+            <a href="category-animal.html" class="">Animal</a>
+            <a href="category-water39.html" class="">Water39</a>
+            <a href="category-grow-games.html" class="">Grow games</a>
+            <a href="category-upgrade-games.html" class="">Upgrade games</a>
+            <a href="category-grow99.html" class="">Grow99</a>
+          </div>
+        </div>
+        <div class="top-nav-dropdown ">
+          <button class="top-nav-dropdown-btn">About ▾</button>
+          <div class="top-nav-dropdown-content">
+            <a href="contact.html" class="">Contact Us</a>
+            <a href="privacy.html" class="">Privacy Policy</a>
+            <a href="terms.html" class="">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Sitemap</h1>
+    <p class="subtitle">Discover all HTML5 games, categories, and information pages on LearnQuester.</p>
+  </header>
+
+    <!-- Dedicated Search Bar Row -->
+  <div class="search-bar-row">
+    <div class="search-bar-row-container">
+      <input type="text" id="searchInput" placeholder="Search for your favorite games..." autocomplete="off">
+      <div id="searchSuggestions" class="search-suggestions"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="static-content-box">
+      
+    <style>
+      .sitemap-section {
+        margin-top: 30px;
+      }
+      .sitemap-section h3 {
+        color: var(--accent);
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 5px;
+      }
+      .sitemap-list {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 30px;
+      }
+      .sitemap-list li {
+        margin-bottom: 10px;
+      }
+      .sitemap-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+      }
+      .sitemap-section a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-block;
+      }
+      .sitemap-section a:hover {
+        color: var(--text-white);
+        transform: translateX(4px);
+      }
+    </style>
+    
+    <h2>Sitemap</h2>
+    <p>Explore all the pages, game categories, and free browser games available on LearnQuester.</p>
+    
+    <div class="sitemap-section">
+      <h3>Main Pages</h3>
+      <ul class="sitemap-list">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="contact.html">✉️ Contact Us</a></li>
+        <li><a href="privacy.html">🔒 Privacy Policy</a></li>
+        <li><a href="terms.html">📝 Terms of Service</a></li>
+      </ul>
+    </div>
+    
+    <div class="sitemap-section">
+      <h3>Game Categories</h3>
+      <ul class="sitemap-list sitemap-grid">
+        <li><a href="category-io.html">📂 .IO Games</a></li>
+      <li><a href="category-1-player139.html">📂 1 Player139 Games</a></li>
+      <li><a href="category-2d1-070.html">📂 2D1,070 Games</a></li>
+      <li><a href="category-3d1-371.html">📂 3D1,371 Games</a></li>
+      <li><a href="category-adventure.html">📂 Adventure Games</a></li>
+      <li><a href="category-agility.html">📂 Agility Games</a></li>
+      <li><a href="category-animal.html">📂 Animal Games</a></li>
+      <li><a href="category-animal216.html">📂 Animal216 Games</a></li>
+      <li><a href="category-arena255.html">📂 Arena255 Games</a></li>
+      <li><a href="category-art.html">📂 Art Games</a></li>
+      <li><a href="category-avoid.html">📂 Avoid Games</a></li>
+      <li><a href="category-avoid295.html">📂 Avoid295 Games</a></li>
+      <li><a href="category-basketball.html">📂 Basketball Games</a></li>
+      <li><a href="category-battle.html">📂 Battle Games</a></li>
+      <li><a href="category-battle523.html">📂 Battle523 Games</a></li>
+      <li><a href="category-battle524.html">📂 Battle524 Games</a></li>
+      <li><a href="category-bike.html">📂 Bike Games</a></li>
+      <li><a href="category-boardgames.html">📂 Boardgames Games</a></li>
+      <li><a href="category-brain.html">📂 Brain Games</a></li>
+      <li><a href="category-brain261.html">📂 Brain261 Games</a></li>
+      <li><a href="category-bubble-shooter.html">📂 Bubble Shooter Games</a></li>
+      <li><a href="category-business135.html">📂 Business135 Games</a></li>
+      <li><a href="category-can-t-stop-playing212.html">📂 Can’t Stop Playing212 Games</a></li>
+      <li><a href="category-car.html">📂 Car Games</a></li>
+      <li><a href="category-cards.html">📂 Cards Games</a></li>
+      <li><a href="category-care.html">📂 Care Games</a></li>
+      <li><a href="category-cartoon76.html">📂 Cartoon76 Games</a></li>
+      <li><a href="category-casual.html">📂 Casual Games</a></li>
+      <li><a href="category-casual971.html">📂 Casual971 Games</a></li>
+      <li><a href="category-collect565.html">📂 Collect565 Games</a></li>
+      <li><a href="category-connect68.html">📂 Connect68 Games</a></li>
+      <li><a href="category-controller.html">📂 Controller Games</a></li>
+      <li><a href="category-cooking.html">📂 Cooking Games</a></li>
+      <li><a href="category-cooking46.html">📂 Cooking46 Games</a></li>
+      <li><a href="category-cute.html">📂 Cute Games</a></li>
+      <li><a href="category-deep-immersive24.html">📂 Deep & immersive24 Games</a></li>
+      <li><a href="category-discord.html">📂 Discord Games</a></li>
+      <li><a href="category-dress-up97.html">📂 Dress Up97 Games</a></li>
+      <li><a href="category-dress-up.html">📂 Dress-up Games</a></li>
+      <li><a href="category-educational.html">📂 Educational Games</a></li>
+      <li><a href="category-escape.html">📂 Escape Games</a></li>
+      <li><a href="category-fashion.html">📂 Fashion Games</a></li>
+      <li><a href="category-fashion105.html">📂 Fashion105 Games</a></li>
+      <li><a href="category-fighting.html">📂 Fighting Games</a></li>
+      <li><a href="category-fighting124.html">📂 Fighting124 Games</a></li>
+      <li><a href="category-flash.html">📂 Flash Games</a></li>
+      <li><a href="category-food.html">📂 Food Games</a></li>
+      <li><a href="category-food95.html">📂 Food95 Games</a></li>
+      <li><a href="category-football.html">📂 Football Games</a></li>
+      <li><a href="category-fps.html">📂 FPS Games</a></li>
+      <li><a href="category-fps-games.html">📂 FPS games Games</a></li>
+      <li><a href="category-fps174.html">📂 FPS174 Games</a></li>
+      <li><a href="category-free-ragdoll-games.html">📂 free ragdoll games Games</a></li>
+      <li><a href="category-games.html">📂 Games Games</a></li>
+      <li><a href="category-github-io.html">📂 Github.io Games</a></li>
+      <li><a href="category-grow-games.html">📂 grow games Games</a></li>
+      <li><a href="category-grow99.html">📂 Grow99 Games</a></li>
+      <li><a href="category-gun238.html">📂 Gun238 Games</a></li>
+      <li><a href="category-hero71.html">📂 Hero71 Games</a></li>
+      <li><a href="category-hero72.html">📂 Hero72 Games</a></li>
+      <li><a href="category-horror.html">📂 Horror Games</a></li>
+      <li><a href="category-idle.html">📂 Idle Games</a></li>
+      <li><a href="category-idle445.html">📂 Idle445 Games</a></li>
+      <li><a href="category-idle448.html">📂 Idle448 Games</a></li>
+      <li><a href="category-incremental388.html">📂 Incremental388 Games</a></li>
+      <li><a href="category-interstellar.html">📂 Interstellar Games</a></li>
+      <li><a href="category-interstellarnetwork.html">📂 Interstellarnetwork Games</a></li>
+      <li><a href="category-interstellarproxy.html">📂 Interstellarproxy Games</a></li>
+      <li><a href="category-interstellarunblocker.html">📂 Interstellarunblocker Games</a></li>
+      <li><a href="category-jigsaw.html">📂 Jigsaw Games</a></li>
+      <li><a href="category-jumping147.html">📂 Jumping147 Games</a></li>
+      <li><a href="category-logic538.html">📂 Logic538 Games</a></li>
+      <li><a href="category-magic46.html">📂 Magic46 Games</a></li>
+      <li><a href="category-mahjong.html">📂 Mahjong Games</a></li>
+      <li><a href="category-mahjong-connect.html">📂 Mahjong & Connect Games</a></li>
+      <li><a href="category-match-3117.html">📂 Match 3117 Games</a></li>
+      <li><a href="category-match-3.html">📂 Match-3 Games</a></li>
+      <li><a href="category-merge.html">📂 Merge Games</a></li>
+      <li><a href="category-minecraft.html">📂 Minecraft Games</a></li>
+      <li><a href="category-mission207.html">📂 Mission207 Games</a></li>
+      <li><a href="category-mmo24.html">📂 MMO24 Games</a></li>
+      <li><a href="category-mmo25.html">📂 MMO25 Games</a></li>
+      <li><a href="category-mobile2-095.html">📂 Mobile2,095 Games</a></li>
+      <li><a href="category-mobile2-112.html">📂 Mobile2,112 Games</a></li>
+      <li><a href="category-monster.html">📂 Monster Games</a></li>
+      <li><a href="category-monster206.html">📂 Monster206 Games</a></li>
+      <li><a href="category-mouse1-697.html">📂 Mouse1,697 Games</a></li>
+      <li><a href="category-mouse1-707.html">📂 Mouse1,707 Games</a></li>
+      <li><a href="category-party23.html">📂 Party23 Games</a></li>
+      <li><a href="category-physics371.html">📂 Physics371 Games</a></li>
+      <li><a href="category-pool.html">📂 Pool Games</a></li>
+      <li><a href="category-premium-perks71.html">📂 Premium Perks71 Games</a></li>
+      <li><a href="category-premium-perks74.html">📂 Premium Perks74 Games</a></li>
+      <li><a href="category-proxies.html">📂 Proxies Games</a></li>
+      <li><a href="category-proxy.html">📂 Proxy Games</a></li>
+      <li><a href="category-puzzle.html">📂 Puzzle Games</a></li>
+      <li><a href="category-quiz.html">📂 Quiz Games</a></li>
+      <li><a href="category-racing-driving.html">📂 Racing & Driving Games</a></li>
+      <li><a href="category-ragdoll57.html">📂 Ragdoll57 Games</a></li>
+      <li><a href="category-restaurant64.html">📂 Restaurant64 Games</a></li>
+      <li><a href="category-robot49.html">📂 Robot49 Games</a></li>
+      <li><a href="category-roguelike-games.html">📂 roguelike games Games</a></li>
+      <li><a href="category-roguelike38.html">📂 Roguelike38 Games</a></li>
+      <li><a href="category-rpg-games.html">📂 RPG games Games</a></li>
+      <li><a href="category-rpg80.html">📂 RPG80 Games</a></li>
+      <li><a href="category-sandbox.html">📂 Sandbox Games</a></li>
+      <li><a href="category-sandbox40.html">📂 Sandbox40 Games</a></li>
+      <li><a href="category-school.html">📂 School Games</a></li>
+      <li><a href="category-shooter.html">📂 Shooter Games</a></li>
+      <li><a href="category-simulation.html">📂 Simulation Games</a></li>
+      <li><a href="category-sniper39.html">📂 Sniper39 Games</a></li>
+      <li><a href="category-soccer.html">📂 Soccer Games</a></li>
+      <li><a href="category-soccer60.html">📂 Soccer60 Games</a></li>
+      <li><a href="category-sports.html">📂 Sports Games</a></li>
+      <li><a href="category-stickman.html">📂 Stickman Games</a></li>
+      <li><a href="category-strategy.html">📂 Strategy Games</a></li>
+      <li><a href="category-thinky.html">📂 Thinky Games</a></li>
+      <li><a href="category-top-down251.html">📂 Top-Down251 Games</a></li>
+      <li><a href="category-tower-defense.html">📂 Tower Defense Games</a></li>
+      <li><a href="category-traffic34.html">📂 Traffic34 Games</a></li>
+      <li><a href="category-turn-based30.html">📂 Turn Based30 Games</a></li>
+      <li><a href="category-unblocked.html">📂 Unblocked Games</a></li>
+      <li><a href="category-unblocked-games.html">📂 Unblocked Games Games</a></li>
+      <li><a href="category-unblocker.html">📂 Unblocker Games</a></li>
+      <li><a href="category-unblockers.html">📂 Unblockers Games</a></li>
+      <li><a href="category-upgrade-games.html">📂 Upgrade games Games</a></li>
+      <li><a href="category-water39.html">📂 Water39 Games</a></li>
+      <li><a href="category-web-proxy.html">📂 Web Proxy Games</a></li>
+      <li><a href="category-webgame.html">📂 WebGame Games</a></li>
+      <li><a href="category-world-cup17.html">📂 World Cup17 Games</a></li>
+      <li><a href="category-youtube.html">📂 Youtube Games</a></li>
+      </ul>
+    </div>
+    
+    <div class="sitemap-section">
+      <h3>All Games</h3>
+      <ul class="sitemap-list sitemap-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+        <li><a href="2020-connect.html">🎮 2020 Connect</a></li>
+      <li><a href="2048-mayhemio.html">🎮 2048 Mayhem.io</a></li>
+      <li><a href="2248-blast.html">🎮 2248 Blast</a></li>
+      <li><a href="3-tiles.html">🎮 3 Tiles</a></li>
+      <li><a href="67-clicker.html">🎮 67 Clicker</a></li>
+      <li><a href="addiction-solitaire.html">🎮 Addiction Solitaire</a></li>
+      <li><a href="aidan-in-danger.html">🎮 Aidan in Danger</a></li>
+      <li><a href="airport-master-plane-tycoon.html">🎮 Airport Master Plane Tycoon</a></li>
+      <li><a href="alien-intelligence-test.html">🎮 Alien Intelligence Test</a></li>
+      <li><a href="animal-klotski.html">🎮 Animal Klotski</a></li>
+      <li><a href="animalon-epic-monsters-battle.html">🎮 Animalon: Epic Monsters Battle</a></li>
+      <li><a href="ants-party.html">🎮 Ants Party</a></li>
+      <li><a href="archer-legend.html">🎮 Archer Legend</a></li>
+      <li><a href="archers-ragdoll-physics.html">🎮 Archers Ragdoll Physics</a></li>
+      <li><a href="archery-ragdoll.html">🎮 Archery Ragdoll</a></li>
+      <li><a href="arrow-count-master.html">🎮 Arrow Count Master</a></li>
+      <li><a href="arrow-cube-escape.html">🎮 Arrow Cube Escape</a></li>
+      <li><a href="arrow-survival-15-seconds.html">🎮 Arrow Survival: 15 Seconds</a></li>
+      <li><a href="arrow-tap-puzzle.html">🎮 Arrow Tap Puzzle</a></li>
+      <li><a href="asmr-beauty-superstar.html">🎮 ASMR Beauty Superstar</a></li>
+      <li><a href="asmr-pet-treatment.html">🎮 ASMR Pet Treatment</a></li>
+      <li><a href="asylum-baldi-granny-slender.html">🎮 Asylum: Baldi Granny Slender</a></li>
+      <li><a href="atlantic-sky-hunter-xtreme.html">🎮 Atlantic Sky Hunter Xtreme</a></li>
+      <li><a href="avatar-master-fix-up-face.html">🎮 Avatar Master - Fix Up Face</a></li>
+      <li><a href="ball-jump-switch-the-colors.html">🎮 Ball Jump Switch The Colors</a></li>
+      <li><a href="ball-mania.html">🎮 Ball Mania!</a></li>
+      <li><a href="ball-tower-of-hell.html">🎮 Ball Tower of Hell</a></li>
+      <li><a href="barbee-summer-vacation.html">🎮 Barbee Summer Vacation</a></li>
+      <li><a href="barbiecore-aesthetics.html">🎮 Barbiecore Aesthetics</a></li>
+      <li><a href="basket-swap.html">🎮 Basket Swap</a></li>
+      <li><a href="battle-arena.html">🎮 Battle Arena</a></li>
+      <li><a href="battle-arena.html">🎮 Battle Arena</a></li>
+      <li><a href="battle-island-2.html">🎮 Battle Island 2</a></li>
+      <li><a href="battle-of-tank-steel.html">🎮 Battle Of Tank Steel</a></li>
+      <li><a href="battle-racing-stars.html">🎮 Battle Racing Stars</a></li>
+      <li><a href="battle-tanks-firestorm.html">🎮 Battle Tanks Firestorm</a></li>
+      <li><a href="battleship.html">🎮 Battleship</a></li>
+      <li><a href="bbq-stack-run.html">🎮 Bbq Stack Run</a></li>
+      <li><a href="bffs-k-pop-fangirls.html">🎮 BFFs K-Pop Fangirls</a></li>
+      <li><a href="bid-wars-1-auction-simulator.html">🎮 Bid Wars 1: Auction Simulator</a></li>
+      <li><a href="big-block-blast.html">🎮 Big Block Blast</a></li>
+      <li><a href="billiard-diamond-challenge.html">🎮 Billiard Diamond Challenge</a></li>
+      <li><a href="bimka-drive-smash-cars-into-splinters.html">🎮 Bimka Drive - Smash cars into splinters!</a></li>
+      <li><a href="bingo-halloween.html">🎮 Bingo Halloween</a></li>
+      <li><a href="blade-forge-3d.html">🎮 Blade Forge 3D</a></li>
+      <li><a href="blind-boat-shooting-master.html">🎮 Blind Boat Shooting Master</a></li>
+      <li><a href="block-puzzle-tropical-story.html">🎮 Block Puzzle Tropical Story</a></li>
+      <li><a href="blockapolypse-zombie-shooter.html">🎮 Blockapolypse Zombie Shooter</a></li>
+      <li><a href="blockpuzzle-color-blast.html">🎮 BlockPuzzle : Color Blast</a></li>
+      <li><a href="blocks-and-thats-it.html">🎮 Blocks and that's it</a></li>
+      <li><a href="blocks-breaker.html">🎮 Blocks Breaker</a></li>
+      <li><a href="bloom-sort-2-bee-puzzle.html">🎮 Bloom Sort 2: Bee Puzzle</a></li>
+      <li><a href="bloon-pop.html">🎮 Bloon Pop</a></li>
+      <li><a href="blowup-atm.html">🎮 BlowUp ATM</a></li>
+      <li><a href="bmg-crashday-2025.html">🎮 BMG: CrashDay 2025</a></li>
+      <li><a href="bomb-head-hot-potato.html">🎮 Bomb Head Hot Potato</a></li>
+      <li><a href="bombaman-3d.html">🎮 BOMBAMAN 3D</a></li>
+      <li><a href="bouncepop-quest.html">🎮 BouncePop Quest</a></li>
+      <li><a href="bow-and-arrow.html">🎮 Bow And Arrow</a></li>
+      <li><a href="bowling-stars.html">🎮 Bowling Stars</a></li>
+      <li><a href="boyfriend-for-hire.html">🎮 Boyfriend For Hire</a></li>
+      <li><a href="brain-find-can-you-find-it.html">🎮 Brain Find Can You Find It</a></li>
+      <li><a href="brain-puzzle-tricky-choices.html">🎮 Brain Puzzle Tricky Choices</a></li>
+      <li><a href="brainrot-clicker.html">🎮 Brainrot Clicker</a></li>
+      <li><a href="break-beat.html">🎮 Break Beat</a></li>
+      <li><a href="break-the-block-there-brainrot.html">🎮 Break the block there, Brainrot!</a></li>
+      <li><a href="bubble-match-merge.html">🎮 Bubble Match Merge</a></li>
+      <li><a href="bubble-shooter-panda-blast.html">🎮 Bubble Shooter Panda Blast</a></li>
+      <li><a href="bubiloons.html">🎮 Bubiloons</a></li>
+      <li><a href="build-a-queen-2025.html">🎮 Build A Queen 2025</a></li>
+      <li><a href="build-your-aquarium.html">🎮 Build Your Aquarium</a></li>
+      <li><a href="bunnies-sort.html">🎮 Bunnies Sort</a></li>
+      <li><a href="bunnys-farm.html">🎮 Bunnys Farm</a></li>
+      <li><a href="cap.html">🎮 C.A.P.</a></li>
+      <li><a href="cake-link-master.html">🎮 Cake Link Master</a></li>
+      <li><a href="candy-match-puzzle.html">🎮 Candy Match Puzzle</a></li>
+      <li><a href="candy-pop-mania.html">🎮 Candy Pop Mania</a></li>
+      <li><a href="capybara-block-drop.html">🎮 Capybara Block Drop</a></li>
+      <li><a href="car-crash-test-abandoned-city.html">🎮 Car Crash Test: Abandoned City</a></li>
+      <li><a href="card-master.html">🎮 Card Master</a></li>
+      <li><a href="cat-evolution.html">🎮 Cat Evolution</a></li>
+      <li><a href="celebrity-spring-manicure-design.html">🎮 Celebrity Spring Manicure Design</a></li>
+      <li><a href="chain-puzzle.html">🎮 Chain Puzzle</a></li>
+      <li><a href="chicken-banana-run.html">🎮 Chicken Banana Run</a></li>
+      <li><a href="christmas-blocks-sort.html">🎮 Christmas Blocks Sort</a></li>
+      <li><a href="chrono-drive.html">🎮 Chrono Drive</a></li>
+      <li><a href="cinema-empire-idle-tycoon.html">🎮 Cinema Empire Idle Tycoon</a></li>
+      <li><a href="city-gas-station-simulator.html">🎮 City Gas Station Simulator</a></li>
+      <li><a href="classic-labyrinth-3d-maze.html">🎮 Classic Labyrinth 3d Maze</a></li>
+      <li><a href="clean-the-floor.html">🎮 Clean The Floor</a></li>
+      <li><a href="cleaning-simulator.html">🎮 Cleaning Simulator</a></li>
+      <li><a href="coin-merge-machine.html">🎮 Coin Merge Machine</a></li>
+      <li><a href="color-brain-test-games.html">🎮 Color Brain Test Games</a></li>
+      <li><a href="color-cocktail.html">🎮 Color Cocktail</a></li>
+      <li><a href="color-dash.html">🎮 Color Dash</a></li>
+      <li><a href="color-rings-block-puzzle.html">🎮 Color Rings Block Puzzle</a></li>
+      <li><a href="connect-image.html">🎮 Connect Image</a></li>
+      <li><a href="connect-the-dots-color-lines.html">🎮 Connect the Dots - Color Lines</a></li>
+      <li><a href="container-sort-puzzle.html">🎮 Container Sort Puzzle</a></li>
+      <li><a href="cool-supercars-stunts-pvp.html">🎮 Cool SuperCars Stunts PvP</a></li>
+      <li><a href="cougar-simulator-big-cats.html">🎮 Cougar Simulator: Big Cats</a></li>
+      <li><a href="count-and-bounce.html">🎮 Count and Bounce</a></li>
+      <li><a href="cozy-garden-idle.html">🎮 Cozy Garden Idle</a></li>
+      <li><a href="cozy-kitchen-merge.html">🎮 Cozy Kitchen Merge</a></li>
+      <li><a href="crazy-bunnies.html">🎮 Crazy Bunnies</a></li>
+      <li><a href="crazy-plane-landing.html">🎮 Crazy Plane Landing</a></li>
+      <li><a href="creepy-dress-up.html">🎮 Creepy Dress Up</a></li>
+      <li><a href="crunch-locked.html">🎮 Crunch Locked</a></li>
+      <li><a href="crush-the-eggs.html">🎮 Crush the Eggs</a></li>
+      <li><a href="crypto-gals-tiktok-fashion.html">🎮 Crypto Gals Fashion</a></li>
+      <li><a href="crystal-connect.html">🎮 Crystal Connect</a></li>
+      <li><a href="cube-drop-puzzle.html">🎮 Cube Drop Puzzle</a></li>
+      <li><a href="cut-the-rope-time-travel.html">🎮 Cut the Rope Time Travel</a></li>
+      <li><a href="cute-animal-world.html">🎮 Cute Animal World</a></li>
+      <li><a href="cyber-arrow.html">🎮 Cyber Arrow</a></li>
+      <li><a href="cyber-rolling-going-ball-3d.html">🎮 Cyber Rolling Going Ball 3D</a></li>
+      <li><a href="dark-myth-monkey-merge.html">🎮 Dark Myth: Monkey Merge</a></li>
+      <li><a href="day-of-atrocity.html">🎮 Day of Atrocity</a></li>
+      <li><a href="deform-it.html">🎮 Deform It</a></li>
+      <li><a href="diamond-mosaic.html">🎮 Diamond mosaic</a></li>
+      <li><a href="dice-fusion.html">🎮 Dice Fusion</a></li>
+      <li><a href="dictator-simulator-1984.html">🎮 Dictator Simulator: 1984</a></li>
+      <li><a href="digital-circus-find-the-differences.html">🎮 Digital Circus Find The Differences</a></li>
+      <li><a href="dino-shooter-pro.html">🎮 Dino Shooter Pro</a></li>
+      <li><a href="dino-simulator-city-attack.html">🎮 Dino Simulator City Attack</a></li>
+      <li><a href="dogs-vs-aliens.html">🎮 Dogs vs Aliens</a></li>
+      <li><a href="downhill-car-ride-crash-test.html">🎮 Downhill Car Ride: Crash Test</a></li>
+      <li><a href="dr-parking.html">🎮 Dr. Parking</a></li>
+      <li><a href="dragon-hunter.html">🎮 Dragon Hunter</a></li>
+      <li><a href="draw-to-fish-fight.html">🎮 Draw to Fish Fight</a></li>
+      <li><a href="draw-to-home-3d.html">🎮 Draw To Home 3D</a></li>
+      <li><a href="draw-to-smash.html">🎮 Draw To Smash!</a></li>
+      <li><a href="dta-best-thief.html">🎮 DTA: Best Thief</a></li>
+      <li><a href="ducklings.html">🎮 Ducklings</a></li>
+      <li><a href="duet-cats-halloween-cat-music.html">🎮 Duet Cats Halloween Cat Music</a></li>
+      <li><a href="dynamons-11.html">🎮 Dynamons 11</a></li>
+      <li><a href="easter-shadow-match.html">🎮 Easter Shadow Match</a></li>
+      <li><a href="egg-adventure-mirror-world.html">🎮 Egg Adventure: Mirror World</a></li>
+      <li><a href="egg-farm.html">🎮 Egg Farm</a></li>
+      <li><a href="egg-hunt-mania.html">🎮 Egg Hunt Mania</a></li>
+      <li><a href="elemental-dressup-magic.html">🎮 Elemental DressUp Magic</a></li>
+      <li><a href="ellie-and-friends-get-ready-for-first-date.html">🎮 Ellie And Friends Get Ready For First Date</a></li>
+      <li><a href="emoji-drop-themes.html">🎮 Emoji Drop Themes</a></li>
+      <li><a href="emoji-smasher-smiley-game.html">🎮 Emoji Smasher - Smiley Game</a></li>
+      <li><a href="energy-superman-3d.html">🎮 Energy Superman 3D</a></li>
+      <li><a href="epic-racing-descent-on-cars.html">🎮 Epic Racing - Descent on Cars</a></li>
+      <li><a href="epic-stunts-pvp-3d.html">🎮 Epic Stunts PvP 3D</a></li>
+      <li><a href="erase-the-extra-element.html">🎮 Erase the extra element</a></li>
+      <li><a href="escape-room-mystery-key.html">🎮 Escape Room Mystery Key</a></li>
+      <li><a href="everything-is-in-place-rare-finds.html">🎮 Everything is in place: Rare finds</a></li>
+      <li><a href="excavator-simulator-3d.html">🎮 Excavator Simulator 3D</a></li>
+      <li><a href="falling-art-ragdoll-simulator.html">🎮 Falling Art Ragdoll Simulator</a></li>
+      <li><a href="far-orion-new-worlds.html">🎮 Far Orion: New Worlds</a></li>
+      <li><a href="farm-merge-harvest.html">🎮 Farm: Merge Harvest</a></li>
+      <li><a href="farmer-rush-idle-farm-game.html">🎮 Farmer Rush: Idle Farm Game</a></li>
+      <li><a href="fashion-week-2025.html">🎮 Fashion Week 2025</a></li>
+      <li><a href="feet-doctor-urgency-care.html">🎮 Feet Doctor Urgency Care</a></li>
+      <li><a href="fidget-toys-pop-it.html">🎮 Fidget Toys Pop It</a></li>
+      <li><a href="fill-sort-puzzle.html">🎮 Fill & Sort Puzzle</a></li>
+      <li><a href="find-it-find-the-differences.html">🎮 Find It - Find The Differences</a></li>
+      <li><a href="find-the-ghost-cat.html">🎮 Find the Ghost Cat</a></li>
+      <li><a href="fire-truck-driving-simulator.html">🎮 Fire Truck Driving Simulator</a></li>
+      <li><a href="fish-out-of-water.html">🎮 Fish Out of Water!</a></li>
+      <li><a href="fishing-baron-real-fishing.html">🎮 Fishing Baron Real Fishing</a></li>
+      <li><a href="flag-puzzle-jam-collect-flags.html">🎮 Flag Puzzle Jam: Collect Flags</a></li>
+      <li><a href="flower-block.html">🎮 Flower Block</a></li>
+      <li><a href="foam-and-find.html">🎮 Foam and Find</a></li>
+      <li><a href="food-jam.html">🎮 Food Jam</a></li>
+      <li><a href="food-tower-defense.html">🎮 Food Tower Defense</a></li>
+      <li><a href="food-truck-chef.html">🎮 Food Truck Chef™: A Fun Cooking Game</a></li>
+      <li><a href="foot-chinko-russia-2018.html">🎮 Foot Chinko: Russia 2018</a></li>
+      <li><a href="football-penalty.html">🎮 Football Penalty</a></li>
+      <li><a href="football-superstars-2026.html">🎮 Football Superstars 2026</a></li>
+      <li><a href="formula-traffic-racer.html">🎮 Formula Traffic Racer</a></li>
+      <li><a href="fortress-of-the-sinister.html">🎮 Fortress of the Sinister</a></li>
+      <li><a href="freecell.html">🎮 FreeCell</a></li>
+      <li><a href="frog-knight.html">🎮 Frog Knight</a></li>
+      <li><a href="fruit-cafe-match-3.html">🎮 Fruit Cafe: Match 3</a></li>
+      <li><a href="fruit-jam-merge-puzzle-game.html">🎮 Fruit Jam - Merge Puzzle Game</a></li>
+      <li><a href="fruit-merge-arena.html">🎮 Fruit Merge Arena</a></li>
+      <li><a href="galaxy-carnage.html">🎮 Galaxy Carnage</a></li>
+      <li><a href="garden-guardians.html">🎮 Garden Guardians</a></li>
+      <li><a href="garten-of-banban-1-escape.html">🎮 Garten Of BanBan 1 Escape</a></li>
+      <li><a href="gas-station-stick-simulator.html">🎮 Gas Station - Stick Simulator</a></li>
+      <li><a href="geometry-arrow-2.html">🎮 Geometry Arrow 2</a></li>
+      <li><a href="geometry-dash-jump.html">🎮 Geometry Dash Jump</a></li>
+      <li><a href="giant-wanted-monster.html">🎮 Giant Wanted Monster</a></li>
+      <li><a href="gift-merge-santa-world-tour.html">🎮 Gift Merge Santa World Tour</a></li>
+      <li><a href="gladiator-fights.html">🎮 Gladiator Fights</a></li>
+      <li><a href="go-chicken-go.html">🎮 Go Chicken Go!</a></li>
+      <li><a href="good-to-drive.html">🎮 Good to drive</a></li>
+      <li><a href="grandmas-last-stand.html">🎮 Grandma's Last Stand</a></li>
+      <li><a href="granny-gta-vegas.html">🎮 Granny GTA Vegas</a></li>
+      <li><a href="grannys-classroom-nightmare.html">🎮 Granny's Classroom Nightmare</a></li>
+      <li><a href="grill-it-all.html">🎮 Grill It All</a></li>
+      <li><a href="gt-championship-arcade.html">🎮 GT Championship Arcade</a></li>
+      <li><a href="guess-the-italian-brainrot-animals.html">🎮 Guess The Italian Brainrot Animals</a></li>
+      <li><a href="gummy-merge.html">🎮 Gummy merge</a></li>
+      <li><a href="gun-rush.html">🎮 Gun Rush</a></li>
+      <li><a href="halloween-challenge.html">🎮 Halloween Challenge</a></li>
+      <li><a href="hamster-combo-idle.html">🎮 Hamster Combo IDLE</a></li>
+      <li><a href="harvesting-veggies.html">🎮 Harvesting Veggies</a></li>
+      <li><a href="hawaii-match-6.html">🎮 Hawaii Match 6</a></li>
+      <li><a href="headleg-dash-parkour.html">🎮 Headleg Dash Parkour</a></li>
+      <li><a href="hero-ragdoll-fighting.html">🎮 Hero Ragdoll Fighting</a></li>
+      <li><a href="hero-transform-run.html">🎮 Hero Transform Run</a></li>
+      <li><a href="hero-wizard-save-your-girlfriend.html">🎮 Hero Wizard: Save Your Girlfriend</a></li>
+      <li><a href="hexa-puzzle.html">🎮 Hexa puzzle</a></li>
+      <li><a href="hidden-object-rooms-exploration.html">🎮 Hidden Object Rooms Exploration</a></li>
+      <li><a href="hidden-object-emilys-case.html">🎮 Hidden Object: Emily's Case</a></li>
+      <li><a href="hidden-objects-bakery.html">🎮 Hidden Objects Bakery</a></li>
+      <li><a href="high-heels-collect-run.html">🎮 High Heels Collect Run</a></li>
+      <li><a href="hill-climbing-mania.html">🎮 Hill Climbing Mania</a></li>
+      <li><a href="holiday-hex-sort.html">🎮 Holiday Hex Sort</a></li>
+      <li><a href="home-island.html">🎮 Home Island</a></li>
+      <li><a href="horror-hotel-scary-room.html">🎮 Horror Hotel: Scary Room</a></li>
+      <li><a href="hospital-inc.html">🎮 Hospital Inc</a></li>
+      <li><a href="hot-cold-winter-style.html">🎮 Hot & Cold Winter Style</a></li>
+      <li><a href="hotel-fever-tycoon.html">🎮 Hotel Fever Tycoon</a></li>
+      <li><a href="hungry-corgi-cute-music-game.html">🎮 Hungry Corgi - Cute Music Game</a></li>
+      <li><a href="hungry-noob-cafe-simulator.html">🎮 Hungry Noob: Cafe Simulator</a></li>
+      <li><a href="hyper-cars-ramp-crash.html">🎮 Hyper Cars Ramp Crash</a></li>
+      <li><a href="i8-city-driver.html">🎮 i8 City Driver</a></li>
+      <li><a href="idle-factory-domination.html">🎮 Idle Factory Domination</a></li>
+      <li><a href="idle-landmark-builder.html">🎮 Idle Landmark Builder</a></li>
+      <li><a href="idle-money-factory.html">🎮 Idle Money Factory</a></li>
+      <li><a href="idle-pet.html">🎮 IDLE Pet</a></li>
+      <li><a href="idle-vlogger-simulator.html">🎮 Idle Vlogger Simulator</a></li>
+      <li><a href="idol-livestream-doll-dress-up.html">🎮 Idol Livestream: Doll Dress Up</a></li>
+      <li><a href="image-crossword.html">🎮 Image Crossword</a></li>
+      <li><a href="interstellar.html">🎮 Interstellar</a></li>
+      <li><a href="italian-brainrot-challenge.html">🎮 Italian Brainrot Challenge</a></li>
+      <li><a href="italian-brainrot-quiz.html">🎮 Italian Brainrot Quiz</a></li>
+      <li><a href="jail-prison-van-police-game.html">🎮 Jail Prison Van Police Game</a></li>
+      <li><a href="jailbreak-assault.html">🎮 Jailbreak Assault</a></li>
+      <li><a href="jelly-belly-make-the-elephant.html">🎮 Jelly-Belly. Make the Elephant</a></li>
+      <li><a href="jetstream-escape.html">🎮 Jetstream Escape</a></li>
+      <li><a href="jigsaw-fantasy.html">🎮 Jigsaw Fantasy</a></li>
+      <li><a href="jump-up-3d-basketball-game.html">🎮 Jump Up 3D: Basketball Game</a></li>
+      <li><a href="just-ludo.html">🎮 Just Ludo</a></li>
+      <li><a href="kaboom-miner.html">🎮 Kaboom Miner</a></li>
+      <li><a href="key-quest.html">🎮 Key Quest</a></li>
+      <li><a href="killer-escape-huggy-extreme.html">🎮 Killer Escape Huggy Extreme</a></li>
+      <li><a href="kingdom-match.html">🎮 Kingdom match</a></li>
+      <li><a href="kingdom-puzzles.html">🎮 Kingdom Puzzles</a></li>
+      <li><a href="kitty-match-3-puzzle-game.html">🎮 Kitty Match 3 puzzle game</a></li>
+      <li><a href="kitty-scramble.html">🎮 Kitty Scramble: Word Stacks</a></li>
+      <li><a href="labuba-merge.html">🎮 Labuba Merge</a></li>
+      <li><a href="labubu-merge.html">🎮 Labubu Merge</a></li>
+      <li><a href="ladder-master-color-run.html">🎮 Ladder Master - Color Run</a></li>
+      <li><a href="last-play-ragdoll-sandbox-kqb.html">🎮 Last Play: Ragdoll Sandbox</a></li>
+      <li><a href="legend-of-fireball.html">🎮 Legend of Fireball</a></li>
+      <li><a href="let-the-train-go.html">🎮 Let The Train Go</a></li>
+      <li><a href="lexy.html">🎮 Lexy</a></li>
+      <li><a href="link-flow.html">🎮 Link Flow</a></li>
+      <li><a href="linklink.html">🎮 LinkLink</a></li>
+      <li><a href="lipstick-collector-run.html">🎮 Lipstick Collector Run</a></li>
+      <li><a href="little-candy-bakery.html">🎮 Little Candy Bakery</a></li>
+      <li><a href="little-dentist-dash.html">🎮 Little Dentist Dash</a></li>
+      <li><a href="little-lily-halloween-prep.html">🎮 Little Lily Halloween Prep</a></li>
+      <li><a href="lol-funny-dance.html">🎮 LOL Funny Dance</a></li>
+      <li><a href="love-archer.html">🎮 Love Archer</a></li>
+      <li><a href="love-tile-trio.html">🎮 Love Tile Trio</a></li>
+      <li><a href="lucky-brainrot-blocks-online.html">🎮 Lucky Brainrot Blocks Online</a></li>
+      <li><a href="magic-beauty-makeup.html">🎮 Magic Beauty Makeup</a></li>
+      <li><a href="magic-forest-merge-the-secrets.html">🎮 Magic Forest - Merge the Secrets</a></li>
+      <li><a href="magic-piano-music.html">🎮 Magic Piano Music</a></li>
+      <li><a href="mahjong-magic-islands.html">🎮 Mahjong Magic Islands</a></li>
+      <li><a href="mahjong-pet-quest.html">🎮 Mahjong Pet Quest</a></li>
+      <li><a href="majestic-dragons-merge.html">🎮 Majestic Dragons Merge</a></li>
+      <li><a href="make-america-great-again.html">🎮 Make America Great Again</a></li>
+      <li><a href="marble-bubble-legend.html">🎮 Marble Bubble Legend</a></li>
+      <li><a href="marble-puzzle-quest.html">🎮 Marble Puzzle Quest</a></li>
+      <li><a href="match-find-3d.html">🎮 Match Find 3D</a></li>
+      <li><a href="max-speed.html">🎮 Max Speed</a></li>
+      <li><a href="maze-craze.html">🎮 Maze Craze</a></li>
+      <li><a href="maze-escape-craft-man.html">🎮 Maze Escape : Craft Man</a></li>
+      <li><a href="mega-shark.html">🎮 Mega Shark</a></li>
+      <li><a href="memory-match-magic.html">🎮 Memory Match Magic</a></li>
+      <li><a href="meow-slide.html">🎮 Meow Slide</a></li>
+      <li><a href="merge-combo.html">🎮 Merge Combo</a></li>
+      <li><a href="merge-cubes-2048-3d.html">🎮 Merge cubes 2048 3D</a></li>
+      <li><a href="merge-galaxy.html">🎮 Merge Galaxy</a></li>
+      <li><a href="mermaid-princess-avater-castle.html">🎮 Mermaid Princess Avater Castle</a></li>
+      <li><a href="mermaidcore-aesthetics.html">🎮 Mermaidcore Aesthetics</a></li>
+      <li><a href="mind-games-math-crosswords.html">🎮 Mind Games: Math Crosswords</a></li>
+      <li><a href="mine-sweeper.html">🎮 Mine Sweeper</a></li>
+      <li><a href="mini-obby-war-game.html">🎮 Mini Obby War Game</a></li>
+      <li><a href="mini-scrapbook-paper.html">🎮 Mini Scrapbook Paper</a></li>
+      <li><a href="minigiants-io.html">🎮 MiniGiants.io</a></li>
+      <li><a href="mirrors-puzzle.html">🎮 Mirrors - Puzzle</a></li>
+      <li><a href="mojo-emoji.html">🎮 Mojo Emoji</a></li>
+      <li><a href="mona-lisa-fashion-experiments.html">🎮 Mona Lisa Fashion Experiments</a></li>
+      <li><a href="monster-impact.html">🎮 Monster Impact</a></li>
+      <li><a href="monster-slayer-merge-survive.html">🎮 Monster Slayer Merge & Survive</a></li>
+      <li><a href="monster-squad-rush.html">🎮 Monster Squad Rush</a></li>
+      <li><a href="moon-league-sports-season.html">🎮 Moon League Sports Season</a></li>
+      <li><a href="mr-cappuccino-assassino.html">🎮 Mr Cappuccino Assassino</a></li>
+      <li><a href="mr-reckless-car-chase-simulator.html">🎮 Mr Reckless: Car Chase Simulator</a></li>
+      <li><a href="mr-drifter-car-chase-simulator.html">🎮 Mr. Drifter: Car Chase Simulator</a></li>
+      <li><a href="murder.html">🎮 Murder</a></li>
+      <li><a href="my-arcade-center.html">🎮 My Arcade Center</a></li>
+      <li><a href="my-farm-life.html">🎮 My Farm life</a></li>
+      <li><a href="nail-queen.html">🎮 Nail Queen</a></li>
+      <li><a href="natural-disaster-survival-obby.html">🎮 Natural disaster survival Obby</a></li>
+      <li><a href="night-club-security.html">🎮 Night Club Security</a></li>
+      <li><a href="ninja-climb.html">🎮 Ninja Climb</a></li>
+      <li><a href="ninja-bamboo-assassin.html">🎮 Ninja: Bamboo Assassin</a></li>
+      <li><a href="noob-fun-fishing.html">🎮 Noob fun fishing</a></li>
+      <li><a href="number-merge-10.html">🎮 Number Merge 10</a></li>
+      <li><a href="nuts-bolts-sort-color-puzzle.html">🎮 Nuts & Bolts Sort: Color Puzzle</a></li>
+      <li><a href="obby-1-pet-every-seconds.html">🎮 Obby +1 Pet Every Seconds</a></li>
+      <li><a href="obby-champions.html">🎮 Obby Champions</a></li>
+      <li><a href="obby-highest-jump-ever.html">🎮 Obby Highest Jump Ever</a></li>
+      <li><a href="obby-pinata-party.html">🎮 Obby Pinata Party</a></li>
+      <li><a href="obby-tower.html">🎮 Obby Tower</a></li>
+      <li><a href="obby-vs-zombies.html">🎮 Obby vs Zombies</a></li>
+      <li><a href="obby-gym-simulator-escape.html">🎮 Obby: Gym Simulator, Escape</a></li>
+      <li><a href="obby-pogo-parkour.html">🎮 Obby: Pogo Parkour!</a></li>
+      <li><a href="offroad-climb-4x4.html">🎮 Offroad Climb 4x4</a></li>
+      <li><a href="offroad-jeep-game-simulator.html">🎮 Offroad Jeep Game Simulator</a></li>
+      <li><a href="oil-tanker-transport-truck.html">🎮 Oil Tanker Transport Truck</a></li>
+      <li><a href="onu-live.html">🎮 Onu Live</a></li>
+      <li><a href="overtide-io.html">🎮 Overtide.io</a></li>
+      <li><a href="pacxon-new-realms.html">🎮 PacXon New Realms</a></li>
+      <li><a href="paint-race.html">🎮 Paint race</a></li>
+      <li><a href="palkovil-the-way-home.html">🎮 Palkovil The Way Home</a></li>
+      <li><a href="palm-island-solitaire.html">🎮 Palm Island Solitaire</a></li>
+      <li><a href="pato-vs-cops.html">🎮 Pato Vs Cops</a></li>
+      <li><a href="people-playground-ragdoll-battle.html">🎮 People Playground: Ragdoll Battle</a></li>
+      <li><a href="perfect-job-run.html">🎮 Perfect Job Run</a></li>
+      <li><a href="perfect-shot.html">🎮 Perfect Shot</a></li>
+      <li><a href="pesky-moles.html">🎮 Pesky Moles</a></li>
+      <li><a href="pet-connect-match.html">🎮 Pet Connect Match</a></li>
+      <li><a href="pet-fall.html">🎮 Pet Fall</a></li>
+      <li><a href="pet-runner.html">🎮 Pet Runner</a></li>
+      <li><a href="pet-simulator.html">🎮 Pet Simulator</a></li>
+      <li><a href="phantom-thief-cat-running.html">🎮 Phantom thief Cat Running</a></li>
+      <li><a href="pick-brainrot-3d-battle.html">🎮 Pick Brainrot: 3D Battle</a></li>
+      <li><a href="pin-puzzle-love-story.html">🎮 Pin Puzzle Love Story</a></li>
+      <li><a href="ping-pong-air.html">🎮 Ping Pong Air</a></li>
+      <li><a href="plane-crash-ragdoll-simulator.html">🎮 Plane Crash Ragdoll Simulator</a></li>
+      <li><a href="planet-hopper.html">🎮 Planet Hopper</a></li>
+      <li><a href="pongoal.html">🎮 Pongoal</a></li>
+      <li><a href="popcat-clicker.html">🎮 Popcat Clicker</a></li>
+      <li><a href="popping-pets.html">🎮 Popping Pets</a></li>
+      <li><a href="popping-sushi.html">🎮 Popping Sushi</a></li>
+      <li><a href="popsortica.html">🎮 PopSortica</a></li>
+      <li><a href="poptropica.html">🎮 Poptropica</a></li>
+      <li><a href="potion-merge-witch.html">🎮 Potion Merge Witch</a></li>
+      <li><a href="princess-rescue-save-girl.html">🎮 Princess Rescue: Save Girl</a></li>
+      <li><a href="princess-vs-shark.html">🎮 Princess vs Shark</a></li>
+      <li><a href="push-the-frog.html">🎮 Push The Frog</a></li>
+      <li><a href="puzzle-about-orange.html">🎮 Puzzle About Orange</a></li>
+      <li><a href="puzzle-trails.html">🎮 Puzzle Trails</a></li>
+      <li><a href="quiz-10-seconds-math.html">🎮 Quiz 10 Seconds Math</a></li>
+      <li><a href="quiz-x.html">🎮 Quiz X</a></li>
+      <li><a href="race-time.html">🎮 Race Time</a></li>
+      <li><a href="racing-pinball.html">🎮 Racing Pinball</a></li>
+      <li><a href="ragdoll-parkour-simulator.html">🎮 Ragdoll Parkour Simulator</a></li>
+      <li><a href="ragdoll-show-throw-break-and-destroy.html">🎮 Ragdoll Show: Throw, Break and Destroy!</a></li>
+      <li><a href="real-car-parking-and-stunt.html">🎮 Real Car Parking And Stunt</a></li>
+      <li><a href="real-drive-3d.html">🎮 Real Drive 3D</a></li>
+      <li><a href="real-freekick-3d.html">🎮 Real Freekick 3D</a></li>
+      <li><a href="restaurant-vip-masterchef.html">🎮 Restaurant VIP Masterchef</a></li>
+      <li><a href="ride-shooter.html">🎮 Ride Shooter</a></li>
+      <li><a href="road-to-7.html">🎮 Road To 7</a></li>
+      <li><a href="robot-transform-race.html">🎮 Robot Transform Race</a></li>
+      <li><a href="roller-coaster-3d.html">🎮 Roller Coaster 3D</a></li>
+      <li><a href="rolling-balls-sea-race.html">🎮 Rolling Balls Sea Race</a></li>
+      <li><a href="romantic-match-tactics.html">🎮 Romantic Match Tactics</a></li>
+      <li><a href="rooftop-challenge.html">🎮 Rooftop Challenge</a></li>
+      <li><a href="run-from-baba-yaga.html">🎮 Run from Baba Yaga</a></li>
+      <li><a href="safe-merge.html">🎮 Safe Merge</a></li>
+      <li><a href="samurai-madness.html">🎮 Samurai Madness</a></li>
+      <li><a href="sand-blast-block-game.html">🎮 Sand Blast - Block Game</a></li>
+      <li><a href="santa-vs-skritch.html">🎮 Santa Vs Skritch</a></li>
+      <li><a href="savage-defenders.html">🎮 Savage Defenders</a></li>
+      <li><a href="save-little-red-hood.html">🎮 Save little red hood</a></li>
+      <li><a href="schoolboy-runaway-room-escape.html">🎮 Schoolboy Runaway: room escape</a></li>
+      <li><a href="screw-jam.html">🎮 Screw Jam!</a></li>
+      <li><a href="screw-puzzle.html">🎮 Screw Puzzle</a></li>
+      <li><a href="screw-sort-3d-screw-puzzle.html">🎮 Screw Sort 3D: Screw Puzzle</a></li>
+      <li><a href="secrets-of-charmland.html">🎮 Secrets of Charmland</a></li>
+      <li><a href="shape-transforming-shifting-run.html">🎮 Shape Transforming: Shifting Run</a></li>
+      <li><a href="shelf-sweep.html">🎮 Shelf Sweep</a></li>
+      <li><a href="siege-break.html">🎮 Siege Break</a></li>
+      <li><a href="sisyphus-simulator.html">🎮 Sisyphus Simulator</a></li>
+      <li><a href="sky-block-bounce.html">🎮 Sky Block Bounce</a></li>
+      <li><a href="skyscraper-to-the-sky.html">🎮 Skyscraper to the Sky</a></li>
+      <li><a href="slenderman-back-to-school.html">🎮 Slenderman Back to School</a></li>
+      <li><a href="slidee.html">🎮 Slidee</a></li>
+      <li><a href="slinky-color-sort.html">🎮 Slinky Color Sort</a></li>
+      <li><a href="slope-emoji-2.html">🎮 Slope Emoji 2</a></li>
+      <li><a href="smash-defense.html">🎮 Smash Defense</a></li>
+      <li><a href="snake-2048.html">🎮 Snake 2048</a></li>
+      <li><a href="snake-puzzle-slither-to-eat.html">🎮 Snake Puzzle: Slither to Eat!</a></li>
+      <li><a href="snakes.html">🎮 SNAKES</a></li>
+      <li><a href="snowboard-game-party.html">🎮 Snowboard Game​ Party</a></li>
+      <li><a href="snowflight.html">🎮 Snowflight</a></li>
+      <li><a href="solitaire-emperor-secrets-of-fate.html">🎮 Solitaire Emperor - Secrets of Fate</a></li>
+      <li><a href="solitaire-tail.html">🎮 Solitaire Tail</a></li>
+      <li><a href="solitaire-winter.html">🎮 Solitaire Winter</a></li>
+      <li><a href="sort-master.html">🎮 Sort Master</a></li>
+      <li><a href="sort-my-parking-area.html">🎮 Sort: My Parking Area</a></li>
+      <li><a href="sorting-candy-factory.html">🎮 Sorting Candy Factory</a></li>
+      <li><a href="sorting-sorcery.html">🎮 Sorting Sorcery</a></li>
+      <li><a href="soul-not-found.html">🎮 Soul Not Found</a></li>
+      <li><a href="space-craft-ship-war.html">🎮 Space Craft: Ship War</a></li>
+      <li><a href="sprunki-challenge.html">🎮 Sprunki Challenge</a></li>
+      <li><a href="sprunki-easter-coloring.html">🎮 Sprunki Easter Coloring</a></li>
+      <li><a href="squad-assembler.html">🎮 Squad Assembler</a></li>
+      <li><a href="squidgameio.html">🎮 SquidGame.io</a></li>
+      <li><a href="stack-tower-pro.html">🎮 Stack Tower Pro</a></li>
+      <li><a href="steampunk-merge-to-battle.html">🎮 Steampunk Merge To Battle</a></li>
+      <li><a href="stick-color-war.html">🎮 Stick - Color War</a></li>
+      <li><a href="stick-boy-bazooka-ragdoll.html">🎮 Stick Boy: Bazooka Ragdoll</a></li>
+      <li><a href="stick-hero-battle.html">🎮 Stick Hero Battle</a></li>
+      <li><a href="stick-war-saga.html">🎮 Stick War Saga</a></li>
+      <li><a href="stick-tactics-destruction.html">🎮 Stick: Tactics & Destruction</a></li>
+      <li><a href="stickman-archero-fight-stick-shadow-fight-war.html">🎮 Stickman Archero Fight: stick shadow fight war</a></li>
+      <li><a href="stickman-dismount-simulator.html">🎮 Stickman Dismount Simulator</a></li>
+      <li><a href="stickman-fight-pro.html">🎮 Stickman Fight Pro</a></li>
+      <li><a href="stickman-gunner.html">🎮 StickMan Gunner</a></li>
+      <li><a href="stickman-kombat-2d.html">🎮 Stickman Kombat 2D</a></li>
+      <li><a href="stickman-mega-boss-battles.html">🎮 Stickman Mega Boss: Battles!</a></li>
+      <li><a href="stickman-miners-wars.html">🎮 Stickman Miners Wars</a></li>
+      <li><a href="stickman-ragdoll-playground.html">🎮 Stickman Ragdoll Playground</a></li>
+      <li><a href="stickman-zombie-vs-stickman-hero.html">🎮 Stickman Zombie vs Stickman Hero</a></li>
+      <li><a href="strike-breakout.html">🎮 Strike Breakout</a></li>
+      <li><a href="stunt-car-extreme-2.html">🎮 Stunt Car Extreme 2</a></li>
+      <li><a href="sudoblock-daily.html">🎮 Sudoblock Daily</a></li>
+      <li><a href="sudoku-master.html">🎮 Sudoku Master</a></li>
+      <li><a href="sugar-heroes.html">🎮 Sugar Heroes</a></li>
+      <li><a href="summer-connect.html">🎮 Summer Connect</a></li>
+      <li><a href="super-ninja-balloon.html">🎮 Super Ninja Balloon</a></li>
+      <li><a href="super-star-animal-salon.html">🎮 Super Star Animal Salon</a></li>
+      <li><a href="supermarket-cashier-simulator.html">🎮 Supermarket Cashier Simulator</a></li>
+      <li><a href="sweet-business-of-cats-cakes.html">🎮 Sweet business of cats: cakes</a></li>
+      <li><a href="sweet-triple-mahjong.html">🎮 Sweet Triple Mahjong</a></li>
+      <li><a href="tank-challenge.html">🎮 Tank Challenge</a></li>
+      <li><a href="tanks.html">🎮 Tanks</a></li>
+      <li><a href="tanks-merge-tank-war-blitz.html">🎮 Tanks Merge: Tank War Blitz</a></li>
+      <li><a href="tap-tap-builder.html">🎮 Tap Tap Builder</a></li>
+      <li><a href="tattoo-master.html">🎮 Tattoo Master</a></li>
+      <li><a href="taxi-simulator-2024.html">🎮 Taxi Simulator 2024</a></li>
+      <li><a href="telekinesis-attack.html">🎮 Telekinesis Attack</a></li>
+      <li><a href="the-best-warrior.html">🎮 The Best Warrior</a></li>
+      <li><a href="the-flowers-merge-and-sell-bouquets.html">🎮 The Flowers: Merge and Sell Bouquets</a></li>
+      <li><a href="the-hardest-puzzle-ever.html">🎮 The Hardest Puzzle Ever</a></li>
+      <li><a href="the-stone-miner.html">🎮 The Stone Miner</a></li>
+      <li><a href="the-superhero-league.html">🎮 The Superhero League</a></li>
+      <li><a href="the-white-room-5.html">🎮 The White Room 5</a></li>
+      <li><a href="theo-morinis-magical-resort.html">🎮 Theo Morini's Magical Resort</a></li>
+      <li><a href="tiles-matching.html">🎮 Tiles Matching</a></li>
+      <li><a href="tiny-baker-ocean-jelly-cake.html">🎮 Tiny Baker Ocean Jelly Cake</a></li>
+      <li><a href="tiny-football-cup-2026.html">🎮 TIny Football Cup 2026</a></li>
+      <li><a href="toilet-roll.html">🎮 Toilet Roll</a></li>
+      <li><a href="tony-archer.html">🎮 Tony Archer</a></li>
+      <li><a href="topsy-turvy.html">🎮 Topsy Turvy</a></li>
+      <li><a href="toy-cars-3d-racing.html">🎮 Toy Cars: 3D Racing</a></li>
+      <li><a href="tracesoccer-ubc.html">🎮 Tracesoccer</a></li>
+      <li><a href="traffic-tap-puzzle.html">🎮 Traffic Tap Puzzle</a></li>
+      <li><a href="treasure-champion-chest-capture.html">🎮 Treasure Champion - Chest Capture</a></li>
+      <li><a href="tripeaks-solitaire-escapes.html">🎮 Tripeaks Solitaire Escapes</a></li>
+      <li><a href="trucktopolis-cooking-chaos.html">🎮 Trucktopolis Cooking Chaos</a></li>
+      <li><a href="tung-sahur-bots-chase-room.html">🎮 Tung Sahur Bots Chase Room</a></li>
+      <li><a href="turbo-race-3d.html">🎮 Turbo Race 3D</a></li>
+      <li><a href="turbo-stars.html">🎮 Turbo Stars</a></li>
+      <li><a href="twilight-solitaire-tripeaks.html">🎮 Twilight Solitaire TriPeaks</a></li>
+      <li><a href="ultimate-robo-duel-3d.html">🎮 Ultimate Robo Duel 3D</a></li>
+      <li><a href="unblock-ball-slide-puzzle.html">🎮 Unblock Ball Slide Puzzle</a></li>
+      <li><a href="unlock-the-bolts.html">🎮 Unlock the Bolts</a></li>
+      <li><a href="unpuzzle-master.html">🎮 Unpuzzle Master</a></li>
+      <li><a href="untangle-rings-master.html">🎮 Untangle Rings Master</a></li>
+      <li><a href="urban-assault-force.html">🎮 Urban Assault Force</a></li>
+      <li><a href="us-army-car-games-truck-driving.html">🎮 Us Army Car Games Truck Driving</a></li>
+      <li><a href="vault-breaker.html">🎮 Vault Breaker</a></li>
+      <li><a href="volley-beans-volleyball-game.html">🎮 Volley Beans - Volleyball Game</a></li>
+      <li><a href="war-lands.html">🎮 War Lands</a></li>
+      <li><a href="war-state-io-conquer-battles.html">🎮 War State IO - Conquer Battles</a></li>
+      <li><a href="wheel-of-bingo.html">🎮 Wheel of Bingo</a></li>
+      <li><a href="wipe-insight-master.html">🎮 Wipe Insight Master</a></li>
+      <li><a href="woodland-slide.html">🎮 Woodland Slide</a></li>
+      <li><a href="wool-sorting.html">🎮 Wool Sorting</a></li>
+      <li><a href="word-game-2026.html">🎮 Word Game 2026</a></li>
+      <li><a href="word-guess-game.html">🎮 Word Guess Game</a></li>
+      <li><a href="word-mine.html">🎮 Word Mine</a></li>
+      <li><a href="word-stars.html">🎮 Word Stars</a></li>
+      <li><a href="wordling-daily-word-challenge.html">🎮 Wordling: Daily Word Challenge</a></li>
+      <li><a href="wordmeister-hd.html">🎮 Wordmeister HD</a></li>
+      <li><a href="words-match.html">🎮 Words Match</a></li>
+      <li><a href="words-with-owl.html">🎮 Words with Owl</a></li>
+      <li><a href="world-solitaire-tripeaks-.html">🎮 World Solitaire -Tripeaks-</a></li>
+      <li><a href="worm-puzzle-snake-apple.html">🎮 Worm Puzzle Snake Apple</a></li>
+      <li><a href="worms.html">🎮 Worms</a></li>
+      <li><a href="yarn-fever-unravel-puzzle.html">🎮 Yarn Fever! Unravel Puzzle</a></li>
+      <li><a href="yoga-master.html">🎮 Yoga Master</a></li>
+      <li><a href="yummy-tales-3.html">🎮 Yummy Tales 3</a></li>
+      <li><a href="zenith-rush.html">🎮 Zenith Rush</a></li>
+      </ul>
+    </div>
+  
+    </div>
+  </div>
+
+  <footer>
+      <nav class="categories-nav">
+    <div class="categories-container">
+      <a href="index.html" class="category-link active">All Games</a>
+      <a href="category-io.html" class="category-link ">.IO</a>
+      <a href="category-1-player139.html" class="category-link ">1 Player139</a>
+      <a href="category-2d1-070.html" class="category-link ">2D1,070</a>
+      <a href="category-3d1-371.html" class="category-link ">3D1,371</a>
+      <a href="category-adventure.html" class="category-link ">Adventure</a>
+      <a href="category-agility.html" class="category-link ">Agility</a>
+      <a href="category-animal.html" class="category-link ">Animal</a>
+      <a href="category-animal216.html" class="category-link ">Animal216</a>
+      <a href="category-arena255.html" class="category-link ">Arena255</a>
+      <a href="category-art.html" class="category-link ">Art</a>
+      <a href="category-avoid.html" class="category-link ">Avoid</a>
+      <a href="category-avoid295.html" class="category-link ">Avoid295</a>
+      <a href="category-basketball.html" class="category-link ">Basketball</a>
+      <a href="category-battle.html" class="category-link ">Battle</a>
+      <a href="category-battle523.html" class="category-link ">Battle523</a>
+      <a href="category-battle524.html" class="category-link ">Battle524</a>
+      <a href="category-bike.html" class="category-link ">Bike</a>
+      <a href="category-boardgames.html" class="category-link ">Boardgames</a>
+      <a href="category-brain.html" class="category-link ">Brain</a>
+      <a href="category-brain261.html" class="category-link ">Brain261</a>
+      <a href="category-bubble-shooter.html" class="category-link ">Bubble Shooter</a>
+      <a href="category-business135.html" class="category-link ">Business135</a>
+      <a href="category-can-t-stop-playing212.html" class="category-link ">Can’t Stop Playing212</a>
+      <a href="category-car.html" class="category-link ">Car</a>
+      <a href="category-cards.html" class="category-link ">Cards</a>
+      <a href="category-care.html" class="category-link ">Care</a>
+      <a href="category-cartoon76.html" class="category-link ">Cartoon76</a>
+      <a href="category-casual.html" class="category-link ">Casual</a>
+      <a href="category-casual971.html" class="category-link ">Casual971</a>
+      <a href="category-collect565.html" class="category-link ">Collect565</a>
+      <a href="category-connect68.html" class="category-link ">Connect68</a>
+      <a href="category-controller.html" class="category-link ">Controller</a>
+      <a href="category-cooking.html" class="category-link ">Cooking</a>
+      <a href="category-cooking46.html" class="category-link ">Cooking46</a>
+      <a href="category-cute.html" class="category-link ">Cute</a>
+      <a href="category-deep-immersive24.html" class="category-link ">Deep & immersive24</a>
+      <a href="category-discord.html" class="category-link ">Discord</a>
+      <a href="category-dress-up97.html" class="category-link ">Dress Up97</a>
+      <a href="category-dress-up.html" class="category-link ">Dress-up</a>
+      <a href="category-educational.html" class="category-link ">Educational</a>
+      <a href="category-escape.html" class="category-link ">Escape</a>
+      <a href="category-fashion.html" class="category-link ">Fashion</a>
+      <a href="category-fashion105.html" class="category-link ">Fashion105</a>
+      <a href="category-fighting.html" class="category-link ">Fighting</a>
+      <a href="category-fighting124.html" class="category-link ">Fighting124</a>
+      <a href="category-flash.html" class="category-link ">Flash</a>
+      <a href="category-food.html" class="category-link ">Food</a>
+      <a href="category-food95.html" class="category-link ">Food95</a>
+      <a href="category-football.html" class="category-link ">Football</a>
+      <a href="category-fps.html" class="category-link ">FPS</a>
+      <a href="category-fps-games.html" class="category-link ">FPS games</a>
+      <a href="category-fps174.html" class="category-link ">FPS174</a>
+      <a href="category-free-ragdoll-games.html" class="category-link ">Free ragdoll games</a>
+      <a href="category-games.html" class="category-link ">Games</a>
+      <a href="category-github-io.html" class="category-link ">Github.io</a>
+      <a href="category-grow-games.html" class="category-link ">Grow games</a>
+      <a href="category-grow99.html" class="category-link ">Grow99</a>
+      <a href="category-gun238.html" class="category-link ">Gun238</a>
+      <a href="category-hero71.html" class="category-link ">Hero71</a>
+      <a href="category-hero72.html" class="category-link ">Hero72</a>
+      <a href="category-horror.html" class="category-link ">Horror</a>
+      <a href="category-idle.html" class="category-link ">Idle</a>
+      <a href="category-idle445.html" class="category-link ">Idle445</a>
+      <a href="category-idle448.html" class="category-link ">Idle448</a>
+      <a href="category-incremental388.html" class="category-link ">Incremental388</a>
+      <a href="category-interstellar.html" class="category-link ">Interstellar</a>
+      <a href="category-interstellarnetwork.html" class="category-link ">Interstellarnetwork</a>
+      <a href="category-interstellarproxy.html" class="category-link ">Interstellarproxy</a>
+      <a href="category-interstellarunblocker.html" class="category-link ">Interstellarunblocker</a>
+      <a href="category-jigsaw.html" class="category-link ">Jigsaw</a>
+      <a href="category-jumping147.html" class="category-link ">Jumping147</a>
+      <a href="category-logic538.html" class="category-link ">Logic538</a>
+      <a href="category-magic46.html" class="category-link ">Magic46</a>
+      <a href="category-mahjong.html" class="category-link ">Mahjong</a>
+      <a href="category-mahjong-connect.html" class="category-link ">Mahjong & Connect</a>
+      <a href="category-match-3117.html" class="category-link ">Match 3117</a>
+      <a href="category-match-3.html" class="category-link ">Match-3</a>
+      <a href="category-merge.html" class="category-link ">Merge</a>
+      <a href="category-minecraft.html" class="category-link ">Minecraft</a>
+      <a href="category-mission207.html" class="category-link ">Mission207</a>
+      <a href="category-mmo24.html" class="category-link ">MMO24</a>
+      <a href="category-mmo25.html" class="category-link ">MMO25</a>
+      <a href="category-mobile2-095.html" class="category-link ">Mobile2,095</a>
+      <a href="category-mobile2-112.html" class="category-link ">Mobile2,112</a>
+      <a href="category-monster.html" class="category-link ">Monster</a>
+      <a href="category-monster206.html" class="category-link ">Monster206</a>
+      <a href="category-mouse1-697.html" class="category-link ">Mouse1,697</a>
+      <a href="category-mouse1-707.html" class="category-link ">Mouse1,707</a>
+      <a href="category-party23.html" class="category-link ">Party23</a>
+      <a href="category-physics371.html" class="category-link ">Physics371</a>
+      <a href="category-pool.html" class="category-link ">Pool</a>
+      <a href="category-premium-perks71.html" class="category-link ">Premium Perks71</a>
+      <a href="category-premium-perks74.html" class="category-link ">Premium Perks74</a>
+      <a href="category-proxies.html" class="category-link ">Proxies</a>
+      <a href="category-proxy.html" class="category-link ">Proxy</a>
+      <a href="category-puzzle.html" class="category-link ">Puzzle</a>
+      <a href="category-quiz.html" class="category-link ">Quiz</a>
+      <a href="category-racing-driving.html" class="category-link ">Racing & Driving</a>
+      <a href="category-ragdoll57.html" class="category-link ">Ragdoll57</a>
+      <a href="category-restaurant64.html" class="category-link ">Restaurant64</a>
+      <a href="category-robot49.html" class="category-link ">Robot49</a>
+      <a href="category-roguelike-games.html" class="category-link ">Roguelike games</a>
+      <a href="category-roguelike38.html" class="category-link ">Roguelike38</a>
+      <a href="category-rpg-games.html" class="category-link ">RPG games</a>
+      <a href="category-rpg80.html" class="category-link ">RPG80</a>
+      <a href="category-sandbox.html" class="category-link ">Sandbox</a>
+      <a href="category-sandbox40.html" class="category-link ">Sandbox40</a>
+      <a href="category-school.html" class="category-link ">School</a>
+      <a href="category-shooter.html" class="category-link ">Shooter</a>
+      <a href="category-simulation.html" class="category-link ">Simulation</a>
+      <a href="category-sniper39.html" class="category-link ">Sniper39</a>
+      <a href="category-soccer.html" class="category-link ">Soccer</a>
+      <a href="category-soccer60.html" class="category-link ">Soccer60</a>
+      <a href="category-sports.html" class="category-link ">Sports</a>
+      <a href="category-stickman.html" class="category-link ">Stickman</a>
+      <a href="category-strategy.html" class="category-link ">Strategy</a>
+      <a href="category-thinky.html" class="category-link ">Thinky</a>
+      <a href="category-top-down251.html" class="category-link ">Top-Down251</a>
+      <a href="category-tower-defense.html" class="category-link ">Tower Defense</a>
+      <a href="category-traffic34.html" class="category-link ">Traffic34</a>
+      <a href="category-turn-based30.html" class="category-link ">Turn Based30</a>
+      <a href="category-unblocked.html" class="category-link ">Unblocked</a>
+      <a href="category-unblocked-games.html" class="category-link ">Unblocked Games</a>
+      <a href="category-unblocker.html" class="category-link ">Unblocker</a>
+      <a href="category-unblockers.html" class="category-link ">Unblockers</a>
+      <a href="category-upgrade-games.html" class="category-link ">Upgrade games</a>
+      <a href="category-water39.html" class="category-link ">Water39</a>
+      <a href="category-web-proxy.html" class="category-link ">Web Proxy</a>
+      <a href="category-webgame.html" class="category-link ">WebGame</a>
+      <a href="category-world-cup17.html" class="category-link ">World Cup17</a>
+      <a href="category-youtube.html" class="category-link ">Youtube</a>
+    </div>
+  </nav>
+    <p style="margin-top: 15px;">&copy; 2026 Sitemap. Deployed on LearnQuester.github.io. All rights reserved.</p>
+    
+    <div class="footer-custom-links" style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;"><custom-links></custom-links></div>
+  </footer>
+
+  <script src="ads-manager.js" defer></script>
+  <script src="search.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const topNavToggle = document.getElementById('topNavToggle');
+      const topNavMenu = document.getElementById('topNavMenu');
+      if (topNavToggle && topNavMenu) {
+        topNavToggle.addEventListener('click', () => {
+          topNavMenu.classList.toggle('open');
+          topNavToggle.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+  <!-- Histats.com START (Hidden counter) -->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,5048361,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?5048361&101" alt="" border="0"></a></noscript>
+<!-- Histats.com END -->
+</body>
+</html>
